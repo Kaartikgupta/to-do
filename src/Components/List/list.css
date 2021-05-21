@@ -6,4 +6,9 @@ li{
     margin-bottom: 15px;
     border-radius: 10px;
     width: fit-content;
+    transition: all 3s ease-in;
+}
+.anima{
+    opacity: 1;
+    transform: translateY(0);
 }

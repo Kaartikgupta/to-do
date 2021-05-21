@@ -14,23 +14,25 @@ class Todo extends Component{
         let { items, input } = this.state;
         items.push(input);
         this.setState({items:items})
-        console.log(this.state.items)
-        //this.setState({items: this.state.items.concat(this.state.input)});
     }
-    // setNullInput=()=>{
-    //     this.setState({input:""})
-    // }
+    delete(id){
+        this.setState((prevState) => {
+            return {
+                items: prevState.items.filter((item, index) => index !== id)
+            };
+        });
+    }
     
     render(){
         return(
             <div className="main">
-            <div className="todo">
-                <form onSubmit={this.itemAdded}>
-                    <input type="text" placeholder="enter to-do"  onChange={this.saveInput} />
-                    <button >Add</button>
-                </form>
-                <List className="list" listItems={this.state.items} />
-            </div>
+                <div className="todo">
+                    <form onSubmit={this.itemAdded}>
+                        <input type="text" placeholder="enter to-do"  onChange={this.saveInput} />
+                        <button>Add</button>
+                    </form>
+                    <List className="list" listItems={this.state.items} _handleDelete={this.delete.bind(this)}/>
+                </div>
             </div>
         )
     }

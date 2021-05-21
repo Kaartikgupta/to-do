@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './list.css'
-const list=(props)=>{
+class List extends Component{
+     _handleDelete(index){
+        this.props._handleDelete(index);
+    }
+    render(){
     return(
         <div>
            <ul>
-               {
-                   props.listItems.map((item,index)=>{
-                       return <li key={index}>{item}</li>
-                   })
-               }
+               {this.props.listItems.map((item,index)=>{
+                    return <li className="anima" key={index} onClick={this._handleDelete.bind(this, index)}>{item}</li>
+                })}
            </ul>
         </div>
         
             
     )
+    }
 }
-
-export default list;
+export default List;
