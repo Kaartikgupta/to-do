@@ -1,0 +1,9 @@
+li{
+    color: #333;
+    padding: 15px;
+    background-color: rgb(176, 184, 184);
+    list-style: none;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    width: fit-content;
+}
