@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './list.css'
+import TransitionGroup from "react-transition-group/TransitionGroup";
+import CSSTransition from "react-transition-group/CSSTransition";
 class List extends Component{
      _handleDelete(index){
         this.props._handleDelete(index);
@@ -7,11 +9,14 @@ class List extends Component{
     render(){
     return(
         <div>
-           <ul>
+           <TransitionGroup component="ul">
                {this.props.listItems.map((item,index)=>{
-                    return <li className="anima" key={index} onClick={this._handleDelete.bind(this, index)}>{item}</li>
+                    return( <CSSTransition key={index} classNames="fade" timeout={300}>
+                                <li onClick={this._handleDelete.bind(this, index)}>{item}</li>    
+                            </CSSTransition>
+                            ) 
                 })}
-           </ul>
+          </TransitionGroup>
         </div>
         
             
