@@ -13,9 +13,9 @@ class Todo extends Component{
         e.preventDefault()
         let { items, input } = this.state;
         items.push(input);
-        this.setState({items:items})
+        this.setState({items:items, input: ""})
     }
-    delete(id){
+     delete=(id)=>{
         this.setState((prevState) => {
             return {
                 items: prevState.items.filter((item, index) => index !== id)
@@ -28,10 +28,10 @@ class Todo extends Component{
             <div className="main">
                 <div className="todo">
                     <form onSubmit={this.itemAdded}>
-                        <input type="text" placeholder="enter to-do"  onChange={this.saveInput} />
+                        <input type="text" placeholder="enter to-do" onChange={this.saveInput} value={this.state.input}/>
                         <button>Add</button>
                     </form>
-                    <List className="list" listItems={this.state.items} _handleDelete={this.delete.bind(this)}/>
+                    <List className="list" listItems={this.state.items} _handleDelete={this.delete}/>
                 </div>
             </div>
         )
